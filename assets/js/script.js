@@ -1,17 +1,8 @@
 // date 
 var day = moment();
 $("#currentDay").html(day.format('dddd, MMMM Do'));
-var  elements = {
-    nine: [],
-    ten: [],
-    eleven: [],
-    twelve: [],
-    one: [],
-    two: [],
-    three: [],
-    four: [],
-    five: []
-  }
+var  elements = {}
+  
 
 
     var loadElements = function() {
@@ -19,10 +10,23 @@ var  elements = {
         elements = JSON.parse(localStorage.getItem("elements"));
       
         // if nothing in localStorage, create a new object to track all task status arrays
+    if(!elements){
+        elements = {
+            nine: [],
+            ten: [],
+            eleven: [],
+            twelve: [],
+            one: [],
+            two: [],
+            three: [],
+            four: [],
+            five: []
+          }
+    }
        
             // displays previously saved information
             $("#boxNine").html(elements.nine);
-            $("#boxten").html(elements.ten);
+            $("#boxTen").html(elements.ten);
             $("#boxEleven").html(elements.eleven);
             $("#boxTwelve").html(elements.twelve);
             $("#boxOne").html(elements.one);
@@ -30,7 +34,6 @@ var  elements = {
             $("#boxThree").html(elements.three);
             $("#boxFour").html(elements.four);
             $("#boxFive").html(elements.five);
-
 
         }
         
@@ -58,7 +61,6 @@ var  elements = {
 //   };
 function saveElements(){
     localStorage.setItem("elements", JSON.stringify(elements));
-
 }
 // var auditTask = function(taskEl) {
 //   // get date from task element
@@ -89,7 +91,7 @@ function saveElements(){
 $(".button").click(function() {
 
       // gets users input then save in elements array
-      elements.nine = $("#boxNine").val();
+      elements.nine= $("#boxNine").val();
       elements.ten = $("#boxTen").val();
       elements.eleven = $("#boxEleven").val();
       elements.twelve = $("#boxTwelve").val();
